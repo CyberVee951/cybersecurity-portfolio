@@ -75,7 +75,6 @@ AND success = 1;
 
 - `investigation_queries.sql` — Contains the documented SQL investigations used in this project.
 - `security_login_investigation.db` — SQLite database containing the fictional login dataset used for analysis.
-```
 
 ## Key Takeaways
 
