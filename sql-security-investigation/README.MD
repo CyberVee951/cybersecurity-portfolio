@@ -69,10 +69,16 @@ SELECT *
 FROM login_attempts
 WHERE country = 'Canada'
 AND success = 1;
+```
 
 ## Project Files
 
 - `investigation_queries.sql` — Contains the documented SQL investigations used in this project.
 - `security_login_investigation.db` — SQLite database containing the fictional login dataset used for analysis.
+```
+
+## Key Takeaways
+
+This project reinforced how SQL can be used to investigate authentication activity by filtering records based on time, login status, location, date, and username patterns. Building the fictional dataset myself also helped strengthen my understanding of how query logic behaves across different test cases.
 
 
