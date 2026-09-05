@@ -1,8 +1,8 @@
-# SQL Security Investigation: Filtering Login Activity
+# SQL Security Investigation: Simulated Login Activity
 
 ## Overview
 
-This project was completed as part of my Google Cybersecurity Certificate coursework. The exercise involved using SQL to investigate security-related login and employee data.
+This project is an independent cybersecurity practice exercise using a fictional login dataset created in DB Browser for SQLite. The objective is to investigate simulated authentication activity using SQL and identify patterns such as failed after-hours logins, activity across specific dates, logins outside the United States, and username patterns. 
 
 The objective was to identify potentially suspicious login activity and retrieve employee information needed for security updates.
 
@@ -10,20 +10,65 @@ The objective was to identify potentially suspicious login activity and retrieve
 
 - SQL queries
 - WHERE clauses
-- AND, OR, and NOT operators
+- AND and OR operators
+- NOT operator
 - LIKE operator and wildcard filtering
-- Security-related data analysis
+- Boolean-style filtering with 0 and 1
+- Security-focused data analysis
 - Login activity investigation
+- Working with a fictional SQLite dataset
 
-## Investigation: Failed Login Attempts After Business Hours
+## Investigation 1: Failed Login Attempts After Business Hours
 
-As part of the security investigation, I needed to identify unsuccessful login attempts that occurred after 18:00. I queried the `log_in_attempts` table and used two conditions to isolate the relevant records.
+I created simulated login records and used SQL to identify unsuccessful login attempts occurring after 18:00.
 
 ```sql
 SELECT *
-FROM log_in_attempts
+FROM login_attempts
 WHERE login_time > '18:00'
-AND success = FALSE;
-```
+AND success = 0;
 
-The `WHERE` clause filters the records to login attempts occurring after 18:00, while `AND success = FALSE` limits the results to unsuccessful login attempts. This allowed me to identify failed login activity occurring outside normal business hours.
+## Investigation 2: Login Activity Across Two Dates
+
+I used the `OR` operator to retrieve login attempts that occurred on either September 5, 2026 or September 6, 2026.
+
+```sql
+SELECT *
+FROM login_attempts
+WHERE login_date = '2026-09-05'
+OR login_date = '2026-09-06';
+
+## Investigation 3: Login Activity Outside the United States
+
+I used `NOT` with `LIKE` to identify login attempts originating from countries other than the USA.
+
+```sql
+SELECT *
+FROM login_attempts
+WHERE country NOT LIKE 'USA';
+
+## Investigation 4: Username Pattern Matching
+
+I used `LIKE` with the `%` wildcard to identify usernames beginning with the letter `j`.
+
+```sql
+SELECT *
+FROM login_attempts
+WHERE username LIKE 'j%';
+
+## Investigation 5: Successful Login Activity from Canada
+
+I combined a country filter with login status to identify successful login attempts originating from Canada.
+
+```sql
+SELECT *
+FROM login_attempts
+WHERE country = 'Canada'
+AND success = 1;
+
+## Project Files
+
+- `investigation_queries.sql` — Contains the documented SQL investigations used in this project.
+- `security_login_investigation.db` — SQLite database containing the fictional login dataset used for analysis.
+
+
