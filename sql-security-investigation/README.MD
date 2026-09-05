@@ -27,6 +27,7 @@ SELECT *
 FROM login_attempts
 WHERE login_time > '18:00'
 AND success = 0;
+```
 
 ## Investigation 2: Login Activity Across Two Dates
 
@@ -37,6 +38,7 @@ SELECT *
 FROM login_attempts
 WHERE login_date = '2026-09-05'
 OR login_date = '2026-09-06';
+```
 
 ## Investigation 3: Login Activity Outside the United States
 
@@ -46,6 +48,7 @@ I used `NOT` with `LIKE` to identify login attempts originating from countries o
 SELECT *
 FROM login_attempts
 WHERE country NOT LIKE 'USA';
+```
 
 ## Investigation 4: Username Pattern Matching
 
@@ -55,6 +58,7 @@ I used `LIKE` with the `%` wildcard to identify usernames beginning with the let
 SELECT *
 FROM login_attempts
 WHERE username LIKE 'j%';
+```
 
 ## Investigation 5: Successful Login Activity from Canada
 
