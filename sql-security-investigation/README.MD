@@ -20,7 +20,7 @@ The objective was to identify potentially suspicious login activity and retrieve
 
 ## Investigation 1: Failed Login Attempts After Business Hours
 
-I created simulated login records and used SQL to identify unsuccessful login attempts occurring after 18:00.
+I created simulated login records and used SQL to identify unsuccessful login attempts occurring after 18:00. This query filters the dataset for login attempts occurring after 18:00 and then narrows the results to unsuccessful logins. In the test dataset, two records matched both conditions.
 
 ```sql
 SELECT *
@@ -31,7 +31,7 @@ AND success = 0;
 
 ## Investigation 2: Login Activity Across Two Dates
 
-I used the `OR` operator to retrieve login attempts that occurred on either September 5, 2026 or September 6, 2026.
+I used the `OR` operator to retrieve login attempts that occurred on either September 5, 2026 or September 6, 2026. This query returns records when either date condition is true. All seven simulated login records matched one of the two specifed dates.
 
 ```sql
 SELECT *
@@ -42,7 +42,7 @@ OR login_date = '2026-09-06';
 
 ## Investigation 3: Login Activity Outside the United States
 
-I used `NOT` with `LIKE` to identify login attempts originating from countries other than the USA.
+I used `NOT` with `LIKE` to identify login attempts originating from countries other than the USA. This query returned two simulated login records: one from Canada and one from Mexico.
 
 ```sql
 SELECT *
@@ -52,7 +52,7 @@ WHERE country NOT LIKE 'USA';
 
 ## Investigation 4: Username Pattern Matching
 
-I used `LIKE` with the `%` wildcard to identify usernames beginning with the letter `j`.
+I used `LIKE` with the `%` wildcard to identify usernames beginning with the letter `j`. This query returned the simulated user jsmith, demonstrating basic SQL pattern matching.
 
 ```sql
 SELECT *
@@ -62,7 +62,7 @@ WHERE username LIKE 'j%';
 
 ## Investigation 5: Successful Login Activity from Canada
 
-I combined a country filter with login status to identify successful login attempts originating from Canada.
+I combined a country filter with login status to identify successful login attempts originating from Canada. This query returned one simulated record, demonstrating how multiple conditions can be combined with AND.
 
 ```sql
 SELECT *
